@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}home.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/home.css" %}{% endblock %}
+
+
+{% block content %}
+
+<div id = "content_home">
+
+	<div id="homeing">
+		<a href="/"><img src="{% static 'img/d123.jpg' %}" style="height:500px; display: block; margin-left: auto; margin-right: auto;"/></a>
+		<h2 style="margin: 0; text-align: center;">코비의 재미난 코딩사이트에 오신것을 진심으로 환영할줄 알았냐?</h4>
+	</div>
+
+	<hr style="margin: 5px 0;">
+
+	<h2>Select Application</h2>
+
+	<table id="applist">
+		<tr>
+		<td><b><i><a href="#">Bookmark</a></i></b></td>
+		<td>You can write your own post and share to others. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo</td>
+		<td class="Edit"><i><a href="#">Add</a></i></td>
+		<td class="Edit"><i><a href="#">Change</a></i></td>
+		</tr>
+
+		<tr>
+		<td><b><i><a href="#">Blog</a></i></b></td>
+		<td>You can write your own post and share to others. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo</td>
+		<td class="Edit"><i><a href="#">Add</a></i></td>
+		<td class="Edit"><i><a href="#">Change</a></i></td>
+		</tr>
+
+		<tr>
+		<td><b><i><a href="#">Photo</a></i></b></td>
+		<td>You can write your own post and share to others. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo</td>
+		<td class="Edit"><i><a href="#">Add</a></i></td>
+		<td class="Edit"><i><a href="#">Change</a></i></td>
+		</tr>
+	</table>
+</div>
+{% endblock content %}
+
+{% block footer %}
+<div id="footer">
+	&copy; Cobee 2017
+</div>
+{% endblock footer %}
