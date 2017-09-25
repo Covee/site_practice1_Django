@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="ko">
+<title>★코비 월드★</title>
 
 <head>
-<title>{% block title %}Django Web Programming{% endblock %}</title>
+	<title>{% block title %}Django Web Programming{% endblock %}</title>
 
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
-<link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}" />
-
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}" />
 </head>
 
 <body>
+	<div id = "header">
+		<h1 class="maintitle">코비의 신나는 호러세상^_^</h1>
+		{% if user.is_active %}
+		<h4 class="welcome">Welcome, 
+				<strong>{% firstof user.get_short_name user.get_username %}</strong> /
+				<a href="{% url 'password_change' %}">비밀번호 변경</a> /
+				<a href="{% url 'logout' %}">로그아웃</a>
+		</h4>
+		{% else %}
+		<h4 class="welcome">Guest로 입장하셨습니다. /
+				<a href="{% url 'login' %}">로그인 </a> /
+				<a href="{% url 'register' %}">회원가입 </a>
+		</h4>
+		{% endif %}
+	</div>
 
-<div id = "header">
-	<h2 class="maintitle">Easy&amp;Fast Django Web Programming</h2>
-	<h4 class="welcome">Welcome, <a href="#">shkim</a> /
-			<a href="#">Change Password</a>
-			<a href="#">Logout</a>
-	</h4>
-</div>
+	<div id="menu">
+		<li><a href="{% url 'home' %}">Home</a></li>
+		<li><a href="{% url 'bookmark:index' %}">Bookmark</a></li>
+		<li><a href="{% url 'blog:index' %}">Blog</a></li>
+		<li><a href="{% url 'photo:index' %}">Photo</a></li>
 
-<div id="menu">
-	<li><a href="#">Home</a></li>
-	<li><a href="#">Bookmark</a></li>
-	<li><a href="#">Blog</a></li>
-	<li><a href="#">Photo</a></li>
+		<li><a href="#">Add&bigtriangledown;</a>
+			<ul>
+				<li><a href="#">Bookmark</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Photo</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Change&bigtriangledown;</a>
+			<ul>
+				<li><a href="#">Bookmark</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Photo</a></li>
+			</ul>
+		</li>
 
-	<li><a href="#">Add&bigtriangledown;</a>
-		<ul>
-			<li><a href="#">Bookmark</a></li>
-			<li><a href="#">Blog</a></li>
-			<li><a href="#">Photo</a></li>
-		</ul>
-	</li>
-	<li><a href="#">Change&bigtriangledown;</a>
-		<ul>
-			<li><a href="#">Bookmark</a></li>
-			<li><a href="#">Blog</a></li>
-			<li><a href="#">Photo</a></li>
-		</ul>
-	</li>
+		<li><a href="{% url 'blog:post_archive' %}">Archive</a></li>
+		<li><a href="{% url 'blog:search' %}">Search</a></li>
+		<li><a href="{% url 'admin:index' %}">Admin</a></li>
+	</div>
 
-	<li><a href="#">Archive</a></li>
-	<li><a href="#">Search</a></li>
-	<li><a href="#">Admin</a></li>
-</div>
-
-{% block content %}{% endblock %}
-{% block footer %}{% endblock %}
+	{% block content %}{% endblock %}
+	{% block footer %}{% endblock %}
 
 </body>
 </html>
